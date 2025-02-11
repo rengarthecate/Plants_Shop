@@ -1,11 +1,15 @@
-const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
+const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
 
-/**
- * Metro configuration
- * https://reactnative.dev/docs/metro
- *
- * @type {import('metro-config').MetroConfig}
- */
-const config = {};
+const config = {
+  transformer: {
+    // Tắt Bridgeless mode cho react-native-reanimated
+    experimentalImportSupport: false,
+    inlineRequires: false,
+  },
+  resolver: {
+    // Đảm bảo rằng các module đúng cách
+    extraNodeModules: require('node-libs-react-native'),
+  },
+};
 
 module.exports = mergeConfig(getDefaultConfig(__dirname), config);
