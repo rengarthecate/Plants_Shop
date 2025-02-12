@@ -1,9 +1,11 @@
-import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity, ScrollView } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import React from 'react'
+import Icon from 'react-native-vector-icons/Ionicons';
 
-const Width = Dimensions.get('screen').width
-const Height = Dimensions.get('screen').height
+import React from 'react';
+
+const Width = Dimensions.get('screen').width;
+const Height = Dimensions.get('screen').height;
 
 const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const today = new Date().getDay();
@@ -14,87 +16,92 @@ const levels = [
     { title: "Advanced", color: ["#D32F2F", "hotpink"] }
 ];
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
     return (
-        <View style={styles.container}>
-            {/* Header */}
-            <View style={styles.Header}>
-                <Text style={styles.title}>Workout at home</Text>
-                <View style={styles.row}>
-                    <Image
-                        style={styles.icon}
-                        source={{ uri: 'https://png.pngtree.com/png-clipart/20230103/original/pngtree-3d-fire-icon-simple-png-image_8863690.png' }}
-                    />
-                    <View style={styles.proBtn}>
+        <LinearGradient colors={['#4caf50', '#03a9f4']} style={styles.container}>
+            <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
+                            <Icon name="chevron-back-outline" size={30} color="white" />
+                        </TouchableOpacity>
+            <ScrollView contentContainerStyle={styles.scrollContainer}>
+                {/* Header */}
+                <View style={styles.Header}>
+                    <Text style={styles.title}>Tập luyện tại nhà</Text>
+                    <View style={styles.row}>
                         <Image
-                            style={styles.crownIcon}
-                            source={{ uri: 'https://static.vecteezy.com/system/resources/previews/009/391/074/non_2x/crown-icon-transparent-free-png.png' }}
+                            style={styles.icon}
+                            source={{ uri: 'https://png.pngtree.com/png-clipart/20230103/original/pngtree-3d-fire-icon-simple-png-image_8863690.png' }}
                         />
-                        <Text style={styles.proTxt}>PRO</Text>
+                        <View style={styles.proBtn}>
+                            <Image
+                                style={styles.crownIcon}
+                                source={{ uri: 'https://static.vecteezy.com/system/resources/previews/009/391/074/non_2x/crown-icon-transparent-free-png.png' }}
+                            />
+                            <Text style={styles.proTxt}>PRO</Text>
+                        </View>
                     </View>
                 </View>
-            </View>
 
-            {/* Mục tiêu hàng tuần */}
-            <View style={styles.targetSection}>
-                <Text style={styles.targetTitle}>Weekly Goals</Text>
-                <View style={styles.weekDays}>
-                    {days.map((day, index) => (
-                        <View key={index} style={[styles.dayBox, today === index && styles.todayHighlight]}>
-                            <Text style={[styles.dayText, today === index && styles.todayText]}>{day}</Text>
-                        </View>
-                    ))}
-                </View>
-            </View>
-
-            {/* Thử thách */}
-            <View style={styles.challengeSection}>
-                <Text style={styles.title2}>7x4 Challenge</Text>
-                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                    <View style={styles.row2}>
-                        {[1, 2].map((_, index) => (
-                            <TouchableOpacity key={index} activeOpacity={0.9}>
-                                <LinearGradient style={styles.challengeBox} colors={['#45a3fb', '#3378b8']}>
-                                    <Image style={styles.challengeImg} source={{ uri: 'https://static.vecteezy.com/system/resources/previews/036/271/852/non_2x/ai-generated-a-man-is-doing-bicep-curls-with-a-dumbbell-cartoon-style-on-a-transparent-background-free-png.png' }} />
-                                    <Text style={styles.challengeTitle}>Full Body Challenge 7x4</Text>
-                                    <Text style={styles.challengeTxt}>Start your body sculpting journey to target all muscle groups and build your dream body in 4 weeks!</Text>
-                                    <TouchableOpacity style={styles.beginBtn}>
-                                        <Text style={styles.beginBtnText}>Begin</Text>
-                                    </TouchableOpacity>
-                                </LinearGradient>
-                            </TouchableOpacity>
+                {/* Mục tiêu hàng tuần */}
+                <LinearGradient style={styles.targetSection} colors={['#45a3fb', '#3378b8']}>
+                <Text style={styles.targetTitle}>Mục tiêu hàng tuần</Text>
+                    <View style={styles.weekDays}>
+                        {days.map((day, index) => (
+                            <View key={index} style={[styles.dayBox, today === index && styles.todayHighlight]}>
+                                <Text style={[styles.dayText, today === index && styles.todayText]}>{day}</Text>
+                            </View>
                         ))}
                     </View>
-                </ScrollView>
-            </View>
+                </LinearGradient>
 
-            <View style={styles.titleSection}>
-                {levels.map((level, index) => (
-                    <TouchableOpacity key={index} activeOpacity={0.9}>
-                        <LinearGradient
-                            style={styles.titleBox}
-                            colors={level.color}
-                        >
-                            <Text style={styles.title3}>{level.title}</Text>
-                        </LinearGradient>
-                    </TouchableOpacity>
-                ))}
-            </View>
+                {/* Thử thách */}
+                <View style={styles.challengeSection}>
+                    <Text style={styles.title2}>Thử thách 7x4</Text>
+                    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                        <View style={styles.row2}>
+                            {[1, 2].map((_, index) => (
+                                <TouchableOpacity key={index} activeOpacity={0.9}>
+                                    <LinearGradient style={styles.challengeBox} colors={['#45a3fb', '#3378b8']}>
+                                        <Image style={styles.challengeImg} source={{ uri: 'https://static.vecteezy.com/system/resources/previews/036/271/852/non_2x/ai-generated-a-man-is-doing-bicep-curls-with-a-dumbbell-cartoon-style-on-a-transparent-background-free-png.png' }} />
+                                        <Text style={styles.challengeTitle}>Thử thách toàn thân 7x4</Text>
+                                        <Text style={styles.challengeTxt}>Start your body sculpting journey to target all muscle groups and build your dream body in 4 weeks!</Text>
+                                        <TouchableOpacity style={styles.beginBtn}>
+                                            <Text style={styles.beginBtnText}>Begin</Text>
+                                        </TouchableOpacity>
+                                    </LinearGradient>
+                                </TouchableOpacity>
+                            ))}
+                        </View>
+                    </ScrollView>
+                </View>
 
-            <View style={styles.column}>
-                {[1, 2].map((_, index) => (
-                    <TouchableOpacity key={index} activeOpacity={0.9}>
-                        <LinearGradient style={styles.exerciseBox} colors={['#45a3fb', '#3378b8']}>
-                            <Image style={[styles.challengeImg, {top: 20, right: 20, width: 150, height: 60}]} source={{ uri: 'https://cdni.iconscout.com/illustration/premium/thumb/man-doing-abs-exercise-illustration-download-in-svg-png-gif-file-formats--workout-plank-position-sport-healthy-lifestyle-pack-people-illustrations-5021815.png' }} />
-                            <Text style={styles.challengeTitle}>Beginner Abs</Text>
-                            <Text style={styles.challengeTxt}>20 MIN - 16 Exercises</Text>
-                        </LinearGradient>
-                    </TouchableOpacity>
-                ))}
-            </View>
-        </View>
-    )
-}
+                <View style={styles.titleSection}>
+                    {levels.map((level, index) => (
+                        <TouchableOpacity key={index} activeOpacity={0.9}>
+                            <LinearGradient
+                                style={styles.titleBox}
+                                colors={level.color}
+                            >
+                                <Text style={styles.title3}>{level.title}</Text>
+                            </LinearGradient>
+                        </TouchableOpacity>
+                    ))}
+                </View>
+
+                <View style={styles.column}>
+                    {[1, 2, 3, 4].map((_, index) => (
+                        <TouchableOpacity key={index} activeOpacity={0.9} onPress={() => navigation.navigate('ExerciseDetail')}>
+                            <LinearGradient style={styles.exerciseBox} colors={['#45a3fb', '#3378b8']}>
+                                <Image style={[styles.challengeImg, {top: 20, right: 20, width: 150, height: 60}]} source={{ uri: 'https://cdni.iconscout.com/illustration/premium/thumb/man-doing-abs-exercise-illustration-download-in-svg-png-gif-file-formats--workout-plank-position-sport-healthy-lifestyle-pack-people-illustrations-5021815.png' }} />
+                                <Text style={styles.challengeTitle}>Beginner Abs</Text>
+                                <Text style={styles.challengeTxt}>20 MIN - 16 Exercises</Text>
+                            </LinearGradient>
+                        </TouchableOpacity>
+                    ))}
+                </View>
+            </ScrollView>
+        </LinearGradient>
+    );
+};
 
 export default HomeScreen;
 
@@ -103,10 +110,18 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white'
     },
+    backBtn: {
+        marginTop: Height * 0.07,
+        marginLeft: Width * 0.05,
+    },
+    scrollContainer: {
+        flexGrow: 1,
+        paddingBottom: 20 // Thêm padding dưới để tránh bị che khuất nội dung cuối cùng
+    },
     Header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: Height * 0.05,
+        marginTop: Height * 0.02,
         marginBottom: 20
     },
     icon: {
@@ -141,21 +156,26 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         fontSize: 25,
         alignSelf: 'center',
+        color: 'white',
         marginLeft: 20
     },
     targetSection: {
         width: Width - 40,
-        borderWidth: 0.9,
+        borderWidth: 0.3,
         borderRadius: 15,
         height: 120,
         alignSelf: 'center',
-        borderColor: 'gray',
-        padding: 15
+        borderColor: 'black',
+        padding: 15,
+        backgroundColor: '#03a9f4',
+        elevation: 10,
     },
     targetTitle: {
         fontWeight: '600',
         fontSize: 17,
-        marginBottom: 10
+        marginBottom: 10,
+        color: 'white',
+
     },
     weekDays: {
         flexDirection: 'row',
@@ -169,27 +189,27 @@ const styles = StyleSheet.create({
         borderRadius: 20,
     },
     todayHighlight: {
-        backgroundColor: '#eaeaea',
         borderWidth: 2,
-        borderColor: 'gray'
+        borderColor: 'white'
     },
     dayText: {
         fontWeight: '700',
-        color: 'black'
+        color: 'white'
     },
     todayText: {
-        color: 'blue'
+        color: 'white'
     },
     challengeBox: {
         width: Width * 0.7,
         height: 230,
         borderRadius: 10,
         marginLeft: 20,
-        elevation: 3,
+        elevation: 10,
         borderWidth: 0.2,
         marginTop: 30,
         marginRight: 10,
-        overflow: 'hidden'
+        overflow: 'hidden',
+
     },
     challengeTitle: {
         color: 'white',
@@ -199,7 +219,8 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 10,
         lineHeight: 20,
-        letterSpacing: 1
+        letterSpacing: 1,
+
     },
     challengeTxt: {
         fontWeight: '700',
@@ -208,6 +229,7 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         fontSize: 12,
         lineHeight: 17,
+
     },
     challengeImg: {
         position: 'absolute',
@@ -227,6 +249,7 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         fontSize: 17,
         marginLeft: 20,
+        color: 'white',
         marginTop: 20
     },
     beginBtn: {
@@ -280,5 +303,4 @@ const styles = StyleSheet.create({
     column: {
         flexDirection: 'column'
     }
-
 });

@@ -18,5 +18,6 @@ import LiXiVang from './src/lixi/LiXiVang';
 import TetTranhTai from './src/lixi/TetTranhTai';
 import DaiHoiTranhTai from './src/lixi/DaiHoiTranhTai';
 import LacLocVang from './src/lixi/LacLocVang';
+import GoalPick from './src/components/user/Goal';
 
-AppRegistry.registerComponent(appName, () => LacLocVang);
+AppRegistry.registerComponent(appName, () => App);

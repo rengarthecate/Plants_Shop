@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
-import Ruler from './Ruler';
+import Ruler from '../custom/Ruler';
 
 const Height = Dimensions.get('window').height;
 

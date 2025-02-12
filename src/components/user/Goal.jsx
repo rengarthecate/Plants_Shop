@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignSelf: 'center',
         position: 'absolute',
-        top: screenHeight * 0.945
+        top: screenHeight * 0.9
     },
     txtNext: {
         color: 'white',

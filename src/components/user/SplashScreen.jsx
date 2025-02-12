@@ -6,7 +6,7 @@ const Height = Dimensions.get('window').height
 const SplashScreen = ({ navigation }) => {
     useEffect(() => {
         const timer = setTimeout(() => {
-            navigation.replace('Gender');
+            navigation.replace('State');
         }, 2000);
 
         return () => clearTimeout(timer);  
