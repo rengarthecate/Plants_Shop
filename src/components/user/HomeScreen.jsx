@@ -291,7 +291,7 @@ const styles = StyleSheet.create({
         height: 100,
         borderRadius: 10,
         marginLeft: 20,
-        elevation: 10,
+        elevation: 5,
         borderWidth: 0.2,
         marginTop: 30,
         marginRight: 10,
