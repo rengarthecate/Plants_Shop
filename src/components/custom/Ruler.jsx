@@ -81,7 +81,7 @@ const Ruler = ({
                 key={i}
                 style={{
                   backgroundColor: i % 10 === 0 ? '#333' : '#999',
-                  height: i % 10 === 0 ? 40 : 20,
+                  height: i % 10 === 0 ? 60 : 20,
                   width: segmentWidth,
                   marginRight: 20,
                 

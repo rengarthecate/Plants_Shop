@@ -24,7 +24,7 @@ const OTP = ({ navigation }) => {
     const handleVerify = () => {
         const enteredOtp = otp.join('');
         console.log('Entered OTP:', enteredOtp);
-        navigation.navigate('Login');
+        navigation.navigate('CollectInformation');
     };
 
     return (
