@@ -22,4 +22,4 @@ import GoalPick from './src/components/user/Goal';
 import { Calendar } from 'react-native-calendars';
 import CalendarScreen from './src/components/custom/Calendar';
 
-AppRegistry.registerComponent(appName, () => CalendarScreen);
+AppRegistry.registerComponent(appName, () => App);

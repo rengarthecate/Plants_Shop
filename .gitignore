@@ -76,4 +76,10 @@ src/lixi
 src/components/user/BMI.jsx
 src/components/user/Goal.jsx
 src/components/user/WelcomeScreen.jsx
-src/components/user/HomeNavigate.jsx
+src/components/user/AnimateIndexPage.jsx
+src/components/user/PickGender.jsx
+src/components/user/Onboarding.jsx
+
+
+
+

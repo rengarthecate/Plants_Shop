@@ -25,7 +25,7 @@ const SplashScreen = ({ navigation }) => {
         ).start();
     
         const timer = setTimeout(() => {
-            navigation.replace('CollectInformation'); 
+            navigation.replace('State'); 
         }, 3000);
     
         return () => clearTimeout(timer);

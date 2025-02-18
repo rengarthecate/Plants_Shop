@@ -1,40 +1,36 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View, Dimensions } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import React from 'react'
 
-const GradientButton = ({ title, navigation, screen }) => {
-  return (
-    <LinearGradient
-      colors={['#FF69B4', 'red']}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
-      style={styles.buttonBorder}
-    >
-      <TouchableOpacity activeOpacity={0.8} style={styles.button} onPress={() => navigation.navigate(screen)}>
-        <Text style={styles.buttonText}>{title}</Text>
-      </TouchableOpacity>
-    </LinearGradient>
-  );
-};
+const { width, height } = Dimensions.get('window');
 
-const HomeNavigate = ({navigation}) => {
+
+const HomeNavigate = ({ navigation }) => {
   return (
-    <LinearGradient colors={['#4caf50', '#03a9f4']} style={styles.container}>
-      <View style={styles.titleWrapper}>
-        <Text style={styles.title}>F I T L I F E</Text>
+    <View style={styles.container}>
+      <View style={{ flexDirection: 'column' }}>
+        <View style={styles.view1}>
+          <Text style={[styles.text, { fontSize: 42, fontWeight: '900' }]}>GYMSYNC</Text>
+          <Text style={[styles.text, { fontSize: 24, fontWeight: '500', marginTop: -5 }]}>W O R K O U T</Text>
+        </View>
+        <View style={styles.view2}>
+          <View style={styles.txtView}>
+            <Text style={[styles.text1, { color: '#cd3737' }]}>LEAP</Text>
+          </View>
+          <Text style={[styles.text1, { color: '#ffffff' }]}>FITNESS</Text>
+        </View>
       </View>
-      <View style={styles.btnWrapper}>
-        {/* <GradientButton title="Đăng nhập" navigation={navigation} screen="Goal" /> */}
-        {/* <GradientButton title="Chưa có tài khoản" /> */}
+      <View style={styles.loadingContainer}>
         <TouchableOpacity activeOpacity={0.9} style={styles.button} onPress={() => navigation.navigate('Login')}>
           <Text style={styles.buttonText}>Bắt đầu</Text>
         </TouchableOpacity>
         <TouchableOpacity activeOpacity={0.9} style={styles.button} onPress={() => navigation.navigate('Register')}>
           <Text style={styles.buttonText}>Tôi là người mới</Text>
         </TouchableOpacity>
-
       </View>
-    </LinearGradient>
+    </View>
+
+
   )
 }
 
@@ -43,19 +39,69 @@ export default HomeNavigate
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#9f5f91'
-  },
-  title: {
-    fontSize: 40,
-    fontWeight: 'bold',
-    color: 'white',
-    letterSpacing: 5,
-    alignSelf: 'center',
-  },
-  titleWrapper: {
-    flex: 3,
+    backgroundColor: '#ED3737',
     justifyContent: 'center',
-  },
+    alignItems: 'center',
+    paddingHorizontal: width * 0.05,
+    paddingTop: height * 0.02,
+},
+view1: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: height * 0.05,
+},
+text: {
+    color: 'white',
+},
+view2: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 4,
+},
+txtView: {
+    backgroundColor: '#ffffff',
+    paddingHorizontal: width * 0.03,
+    paddingVertical: height * 0.003,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: width * 0.2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 4,
+},
+text1: {
+    fontSize: 18,
+    fontWeight: '600',
+},
+loadingContainer: {
+    position: 'absolute',
+    bottom: height * 0.1,
+    justifyContent: 'center',
+    alignItems: 'center',
+},
+spinner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 60, // Giới hạn khoảng cách di chuyển
+},
+dot1: {
+    width: 15,
+    height: 15,
+    backgroundColor: '#e2e2e2',
+    borderRadius: 15,
+    position: 'absolute',
+},
+dot2: {
+    width: 15,
+    height: 15,
+    backgroundColor: '#d00a0a',
+    borderRadius: 15,
+    position: 'absolute',
+},
   btnWrapper: {
     flex: 1,
     justifyContent: 'center',
@@ -79,10 +125,10 @@ const styles = StyleSheet.create({
     marginVertical: 10
   },
   buttonText: {
-    color: '#03a9f4',
+    color: 'black',
     fontWeight: '700',
     fontSize: 16,
-   
+
   },
 
 
