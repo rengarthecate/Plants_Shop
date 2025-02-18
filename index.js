@@ -19,5 +19,7 @@ import TetTranhTai from './src/lixi/TetTranhTai';
 import DaiHoiTranhTai from './src/lixi/DaiHoiTranhTai';
 import LacLocVang from './src/lixi/LacLocVang';
 import GoalPick from './src/components/user/Goal';
+import { Calendar } from 'react-native-calendars';
+import CalendarScreen from './src/components/custom/Calendar';
 
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent(appName, () => CalendarScreen);

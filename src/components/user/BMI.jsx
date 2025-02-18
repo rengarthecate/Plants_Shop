@@ -19,12 +19,12 @@ const BMICalculator = ({navigation}) => {
                 <Text style={styles.title}>What's your BMI?</Text>
             </View>
             <View style={styles.Wrapper}>
-                <Text style={styles.label}>Height</Text>
+                <Text style={styles.label}>Chiều cao</Text>
                 <View style={{ height: 200 }}> 
                     <Ruler minimum={100} maximum={300} unit="cm" onChangeValue={setHeight} />
                 </View>
 
-                <Text style={styles.label}>Weight</Text>
+                <Text style={styles.label}>Cân nặng</Text>
                 <View style={{ height: 200 }}> 
                     <Ruler minimum={0} maximum={300} unit="kg" onChangeValue={setWeight} />
                 </View>

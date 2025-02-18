@@ -18,10 +18,8 @@ const levels = [
 
 const HomeScreen = ({navigation}) => {
     return (
-        <LinearGradient colors={['#4caf50', '#03a9f4']} style={styles.container}>
-            <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
-                            <Icon name="chevron-back-outline" size={30} color="white" />
-                        </TouchableOpacity>
+        <View style={styles.container}>
+            
             <ScrollView contentContainerStyle={styles.scrollContainer}>
                 {/* Header */}
                 <View style={styles.Header}>
@@ -42,7 +40,7 @@ const HomeScreen = ({navigation}) => {
                 </View>
 
                 {/* Mục tiêu hàng tuần */}
-                <LinearGradient style={styles.targetSection} colors={['#45a3fb', '#3378b8']}>
+                <View style={styles.targetSection} >
                 <Text style={styles.targetTitle}>Mục tiêu hàng tuần</Text>
                     <View style={styles.weekDays}>
                         {days.map((day, index) => (
@@ -51,7 +49,7 @@ const HomeScreen = ({navigation}) => {
                             </View>
                         ))}
                     </View>
-                </LinearGradient>
+                </View>
 
                 {/* Thử thách */}
                 <View style={styles.challengeSection}>
@@ -59,16 +57,14 @@ const HomeScreen = ({navigation}) => {
                     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                         <View style={styles.row2}>
                             {[1, 2].map((_, index) => (
-                                <TouchableOpacity key={index} activeOpacity={0.9}>
-                                    <LinearGradient style={styles.challengeBox} colors={['#45a3fb', '#3378b8']}>
+                                <View key={index} style={styles.challengeBox}>
                                         <Image style={styles.challengeImg} source={{ uri: 'https://static.vecteezy.com/system/resources/previews/036/271/852/non_2x/ai-generated-a-man-is-doing-bicep-curls-with-a-dumbbell-cartoon-style-on-a-transparent-background-free-png.png' }} />
                                         <Text style={styles.challengeTitle}>Thử thách toàn thân 7x4</Text>
                                         <Text style={styles.challengeTxt}>Start your body sculpting journey to target all muscle groups and build your dream body in 4 weeks!</Text>
                                         <TouchableOpacity style={styles.beginBtn}>
                                             <Text style={styles.beginBtnText}>Begin</Text>
                                         </TouchableOpacity>
-                                    </LinearGradient>
-                                </TouchableOpacity>
+                                </View>
                             ))}
                         </View>
                     </ScrollView>
@@ -77,12 +73,11 @@ const HomeScreen = ({navigation}) => {
                 <View style={styles.titleSection}>
                     {levels.map((level, index) => (
                         <TouchableOpacity key={index} activeOpacity={0.9}>
-                            <LinearGradient
+                            <View
                                 style={styles.titleBox}
-                                colors={level.color}
                             >
                                 <Text style={styles.title3}>{level.title}</Text>
-                            </LinearGradient>
+                            </View>
                         </TouchableOpacity>
                     ))}
                 </View>
@@ -90,7 +85,7 @@ const HomeScreen = ({navigation}) => {
                 <View style={styles.column}>
                     {[1, 2, 3, 4].map((_, index) => (
                         <TouchableOpacity key={index} activeOpacity={0.9} onPress={() => navigation.navigate('ExerciseDetail')}>
-                            <LinearGradient style={styles.exerciseBox} colors={['#45a3fb', '#3378b8']}>
+                            <LinearGradient style={styles.exerciseBox} colors={['lightblue', 'white']}>
                                 <Image style={[styles.challengeImg, {top: 20, right: 20, width: 150, height: 60}]} source={{ uri: 'https://cdni.iconscout.com/illustration/premium/thumb/man-doing-abs-exercise-illustration-download-in-svg-png-gif-file-formats--workout-plank-position-sport-healthy-lifestyle-pack-people-illustrations-5021815.png' }} />
                                 <Text style={styles.challengeTitle}>Beginner Abs</Text>
                                 <Text style={styles.challengeTxt}>20 MIN - 16 Exercises</Text>
@@ -99,7 +94,7 @@ const HomeScreen = ({navigation}) => {
                     ))}
                 </View>
             </ScrollView>
-        </LinearGradient>
+        </View>
     );
 };
 
@@ -122,7 +117,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: Height * 0.02,
-        marginBottom: 20
+        marginBottom: 20,
+        marginTop: Height * 0.07
     },
     icon: {
         height: 50,
@@ -156,25 +152,23 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         fontSize: 25,
         alignSelf: 'center',
-        color: 'white',
+        color: 'black',
         marginLeft: 20
     },
     targetSection: {
         width: Width - 40,
-        borderWidth: 0.3,
         borderRadius: 15,
         height: 120,
         alignSelf: 'center',
-        borderColor: 'black',
         padding: 15,
-        backgroundColor: '#03a9f4',
-        elevation: 10,
+        backgroundColor: 'white',
+        elevation: 5,
     },
     targetTitle: {
         fontWeight: '600',
         fontSize: 17,
         marginBottom: 10,
-        color: 'white',
+        color: 'black',
 
     },
     weekDays: {
@@ -189,12 +183,14 @@ const styles = StyleSheet.create({
         borderRadius: 20,
     },
     todayHighlight: {
-        borderWidth: 2,
-        borderColor: 'white'
+        borderWidth: 3,
+        borderColor: 'red',
+        backgroundColor: 'red',
+        elevation: 5
     },
     dayText: {
         fontWeight: '700',
-        color: 'white'
+        color: 'black'
     },
     todayText: {
         color: 'white'
@@ -202,19 +198,20 @@ const styles = StyleSheet.create({
     challengeBox: {
         width: Width * 0.7,
         height: 230,
-        borderRadius: 10,
         marginLeft: 20,
-        elevation: 10,
-        borderWidth: 0.2,
         marginTop: 30,
         marginRight: 10,
         overflow: 'hidden',
-
+        borderRadius: 20,
+        backgroundColor: 'lightblue',
+        elevation: 5,
+        marginBottom: 20
     },
     challengeTitle: {
-        color: 'white',
-        fontWeight: '800',
-        width: '30%',
+        color: 'black',
+        fontWeight: '700',
+        width: '40%',
+        fontSize: 20,
         marginLeft: 20,
         marginTop: 20,
         marginBottom: 10,
@@ -224,7 +221,7 @@ const styles = StyleSheet.create({
     },
     challengeTxt: {
         fontWeight: '700',
-        color: 'white',
+        color: 'black',
         width: '54%',
         marginLeft: 20,
         fontSize: 12,
@@ -249,7 +246,7 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         fontSize: 17,
         marginLeft: 20,
-        color: 'white',
+        color: 'black',
         marginTop: 20
     },
     beginBtn: {
@@ -260,8 +257,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 20,
         marginTop: 20,
-        elevation: 10,
-        borderWidth: 0.2
+        elevation: 5,
     },
     beginBtnText: {
         color: 'blue',
@@ -273,13 +269,14 @@ const styles = StyleSheet.create({
         width: 100,
         height: 40,
         borderRadius: 10,
-        elevation: 10,
+        elevation: 5,
         borderWidth: 0.2,
         marginTop: 30,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor: 'white'
     },
     title3: {
-        color: 'white',
+        color: 'black',
         fontSize: 15,
         alignSelf: 'center',
         fontWeight: '700',
