@@ -3,15 +3,14 @@ import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Image } from 'rea
 import Icon from 'react-native-vector-icons/Ionicons';
 import FastImage from 'react-native-fast-image';
 
-// Import các màn hình con
 import Gender from '../custom/PickGender';
 import Goal from '../custom/Goal';
 import Level from '../custom/LevelScreen';
-import BMI from '../custom/BMI';
+import BMICalculator from './BMI';
 
 const { width, height } = Dimensions.get('window');
 
-const screens = [Gender, Goal, Level, BMI]; // Danh sách các màn hình con
+const screens = [Gender, Goal, Level, BMICalculator];
 
 const CollectInformationScreen = ({ navigation }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -25,7 +24,7 @@ const CollectInformationScreen = ({ navigation }) => {
             case 2:
                 return 'Have you ever worked out?';
             case 3:
-                return 'Your current body condition';
+                return 'What is your \nBMI?';
             default:
                 return '';
         }
@@ -35,7 +34,7 @@ const CollectInformationScreen = ({ navigation }) => {
         if (currentIndex < screens.length - 1) {
             setCurrentIndex((prev) => prev + 1);
         } else {
-            navigation.replace('Home'); 
+            navigation.replace('HomeTabs'); 
         }
     };
 
@@ -43,11 +42,11 @@ const CollectInformationScreen = ({ navigation }) => {
         if (currentIndex > 0) {
             setCurrentIndex((prev) => prev - 1);
         } else {
-            navigation.navigate('PreviousScreen'); // Thay 'PreviousScreen' bằng tên màn hình trước đó
+            navigation.navigate('PreviousScreen');
         }
     };
 
-    const CurrentScreen = screens[currentIndex]; // Lấy component tương ứng với currentIndex
+    const CurrentScreen = screens[currentIndex];
 
     return (
         <View style={styles.container}>
@@ -57,7 +56,7 @@ const CollectInformationScreen = ({ navigation }) => {
                         <Image source={require('../images/Icon_back.png')} />
                     </TouchableOpacity>
                 ) : (
-                    <View style={styles.btnBack} /> // View rỗng để giữ layout đồng đều
+                    <View style={styles.btnBack} />
                 )}
                 <View style={styles.progress}>
                     <View style={styles.progressInner}>
@@ -71,7 +70,6 @@ const CollectInformationScreen = ({ navigation }) => {
                 </View>
             </View>
 
-            {/* Title */}
             <View style={styles.title}>
                 <Text style={styles.titelText}>{title()}</Text>
             </View>
@@ -96,12 +94,10 @@ const CollectInformationScreen = ({ navigation }) => {
                 )
             }
 
-            {/* Body thay đổi theo currentIndex */}
             <View style={styles.body}>
                 <CurrentScreen />
             </View>
 
-            {/* Nút Next / Start */}
             <View style={styles.bottomButton}>
                 <TouchableOpacity style={styles.btnNext} onPress={handleNext}>
                     <Text style={styles.btnNextText}>
@@ -130,7 +126,7 @@ const styles = StyleSheet.create({
         marginTop: height * 0.03
     },
     btnBack: {
-        width: 40, // Giữ layout cố định
+        width: 40, 
         height: 40,
         justifyContent: 'center',
         alignItems: 'center',
@@ -155,7 +151,7 @@ const styles = StyleSheet.create({
         borderRadius: height * 0.01,
     },
     progressActive: {
-        backgroundColor: '#5C4AFA', // Màu active cho bước hiện tại
+        backgroundColor: '#5C4AFA', 
     },
     title: {
         alignItems: 'flex-start',
@@ -190,8 +186,8 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     body: {
-        flexGrow: 1, // Giúp body mở rộng tối đa
-        paddingBottom: height * 0.12, // Để body không bị che bởi nút Next
+        flexGrow: 1, 
+        paddingBottom: height * 0.12, 
         justifyContent: 'center',
         alignItems: 'center',
     },
