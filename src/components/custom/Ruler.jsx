@@ -22,7 +22,7 @@ const Ruler = ({
   unitFontFamily = 'System',
   unitColor = '#888888',
   unitSize = 16,
-  onChangeValue = () => {} 
+  onChangeValue = () => { }
 }) => {
   const [value, setValue] = useState(minimum);
   const scrollX = useRef(new Animated.Value(0)).current;
@@ -63,7 +63,7 @@ const Ruler = ({
             editable={false}
           />
           <Text style={styles.unitText}>{unit}</Text>
-        </View>
+        </View> 
         <Animated.ScrollView
           horizontal
           bounces={false}
@@ -75,7 +75,7 @@ const Ruler = ({
           onMomentumScrollEnd={() => onChangeValue(value)}
         >
           <View style={{ width: rulerWidth, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginLeft: 10 }}>
-            <View style={{ width: spacerWidth }} />
+            <View style={{ width: spacerWidth / 1.4 }} />
             {data.map(i => (
               <View
                 key={i}
@@ -84,16 +84,12 @@ const Ruler = ({
                   height: i % 10 === 0 ? 60 : 20,
                   width: segmentWidth,
                   marginRight: 20,
-                
                 }}
               />
             ))}
             <View style={{ width: spacerWidth }} />
           </View>
         </Animated.ScrollView>
-        {/* <View style={styles.indicator}>
-          <View style={{ height: indicatorHeight, backgroundColor: indicatorColor, width: segmentWidth }} />
-        </View> */}
       </View>
     );
   };

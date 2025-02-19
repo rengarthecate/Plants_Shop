@@ -29,7 +29,7 @@
                 "Cơ bụng thẳng (Rectus Abdominis)",
                 "Cơ liên sườn (Obliques)",
                 "Cơ bụng ngang (Transverse Abdominis)"
-            ]
+            ],
         };
 
         return (

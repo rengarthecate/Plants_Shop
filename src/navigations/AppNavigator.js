@@ -13,6 +13,8 @@ import ExerciseDetailScreen from '../components/user/ExerciseDetail';
 import CollectInformationScreen from '../components/user/CollectInformationScreen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import HistoryScreen from '../components/user/HistoryScreen';
+import ReportScreen from '../components/user/ReportScreen';
 
 
 const Stack = createStackNavigator();
@@ -32,6 +34,14 @@ const HomeTabs = () => {
                         return focused ?
                             <FontAwesome5 name="user" size={size} color={color} /> :
                             <Icon name="account-circle" size={size} color={color} />;
+                    } else if (route.name === 'History') {
+                        return focused ?
+                            <FontAwesome5 name="user" size={size} color={color} /> :
+                            <Icon name="account-circle" size={size} color={color} />;
+                    } else if (route.name === 'Report') {
+                        return focused ?
+                            <FontAwesome5 name="user" size={size} color={color} /> :
+                            <Icon name="account-circle" size={size} color={color} />;
                     }
                 },
                 tabBarActiveTintColor: 'red',
@@ -39,7 +49,12 @@ const HomeTabs = () => {
             })}
         >
             <Tab.Screen name="Tập luyện" component={HomeScreen} />
+            <Tab.Screen name="History" component={HistoryScreen} />
+            <Tab.Screen name="Report" component={ReportScreen} />
             <Tab.Screen name="Profile" component={Profile} />
+
+
+
         </Tab.Navigator>
     );
 };

@@ -141,8 +141,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 20,
-        elevation: 7,
-        borderWidth: 0.2,
+        elevation: 5,
+        // borderWidth: 0.2,
         marginRight: 20
     },
     proTxt: {

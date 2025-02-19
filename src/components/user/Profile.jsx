@@ -19,10 +19,6 @@ const Profile = ({ title, unit, color }) => {
 
     const data = [10, 20, 15, 25, 30, 5, 50];
     const maxHeight = 50;
-    const handleClear = () => {
-        setSelectedDate(null);
-        setCurrentMonth(today);
-    };
 
     return (
         <ScrollView style={styles.container}>
@@ -69,13 +65,13 @@ const Profile = ({ title, unit, color }) => {
                 </TouchableOpacity>
             </View>
 
-            <View style={styles.chartSection}>
+            {/* <View style={styles.chartSection}>
                 <Text style={styles.sectionTitle}>Tuần này</Text>
                 <View style={styles.chartWrap}>
                     <ChartComponent title="Thời gian tập" unit="phút" color="hotpink" data={data} />
                     <ChartComponent title="Calo tiêu hao" unit="kcal" color="orange" data={data} />
                 </View>
-            </View>
+            </View> */}
 
             <View style={styles.calendarSection}>
                 <Text style={styles.sectionTitle}>Lịch</Text>

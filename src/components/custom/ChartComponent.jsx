@@ -11,10 +11,14 @@ const ChartComponent = ({ title, unit, color, data }) => {
             backgroundColor: "#ebebeb",
             borderRadius: 10,
             paddingLeft: 20,
-            elevation: 10
+            elevation: 5
         }}>
             <Text style={{ fontSize: 16, fontWeight: "bold" }}>{title}</Text>
-            <Text style={{ fontSize: 24, fontWeight: "bold" }}>0<Text style={{ fontSize: 15, color: "gray", }}>{unit}</Text></Text>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <Text style={{ fontSize: 24, fontWeight: "bold" }}>0</Text>
+            <Text style={{ fontSize: 15, color: "gray", marginLeft: 5, fontWeight: '600' }}>{unit}</Text>
+            </View>
+
             <Svg width={150} height={80}>
                 {data.map((value, index) => {
                     const barHeight = (value / 30) * maxHeight;

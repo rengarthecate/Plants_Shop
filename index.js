@@ -17,5 +17,9 @@ import CalendarScreen from './src/components/custom/Calendar';
 import Ruler from './src/components/custom/Ruler';
 import BMICalculator from './src/components/user/BMI';
 import Profile from './src/components/user/Profile';
+import AnimatePageIndicator from './src/components/user/AnimateIndexPage';
+import HistoryScreen from './src/components/user/HistoryScreen';
+import ReportScreen from './src/components/user/ReportScreen';
+// import ReportResult from './src/components/custom/ReportResult';
 
 AppRegistry.registerComponent(appName, () => App);

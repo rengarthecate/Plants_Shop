@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Image } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import FastImage from 'react-native-fast-image';
+import Onboarding from './Onboarding';
 
 import Gender from '../custom/PickGender';
 import Goal from '../custom/Goal';
@@ -17,16 +17,11 @@ const CollectInformationScreen = ({ navigation }) => {
 
     const title = () => {
         switch (currentIndex) {
-            case 0:
-                return 'What is your Gender?';
-            case 1:
-                return 'What is your Goal?';
-            case 2:
-                return 'Have you ever worked out?';
-            case 3:
-                return 'What is your \nBMI?';
-            default:
-                return '';
+            case 0: return 'What is your Gender?';
+            case 1: return 'What is your Goal?';
+            case 2: return 'Have you ever worked out?';
+            case 3: return 'What is your \nBMI?';
+            default: return '';
         }
     };
 
@@ -34,7 +29,7 @@ const CollectInformationScreen = ({ navigation }) => {
         if (currentIndex < screens.length - 1) {
             setCurrentIndex((prev) => prev + 1);
         } else {
-            navigation.replace('HomeTabs'); 
+            navigation.replace('HomeTabs');
         }
     };
 
@@ -50,60 +45,42 @@ const CollectInformationScreen = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
-                {currentIndex > 0 ? (
-                    <TouchableOpacity onPress={handleBack} style={styles.btnBack}>
-                        <Image source={require('../images/Icon_back.png')} />
-                    </TouchableOpacity>
-                ) : (
-                    <View style={styles.btnBack} />
-                )}
-                <View style={styles.progress}>
-                    <View style={styles.progressInner}>
-                        {Array(screens.length).fill().map((_, index) => (
-                            <View key={index} style={[
-                                styles.progressItem,
-                                index <= currentIndex ? styles.progressActive : null
-                            ]} />
-                        ))}
-                    </View>
-                </View>
-            </View>
-
             <View style={styles.title}>
                 <Text style={styles.titelText}>{title()}</Text>
             </View>
 
-            {
-                currentIndex === 3 ? (
-                    <View />
-                ) : (
-                    <View style={styles.annouce}>
-                        <FastImage
-                            style={styles.gif}
-                            source={{
-                                uri: 'https://i.gifer.com/XOsX.gif',
-                                priority: FastImage.priority.normal
-                            }}
-                            resizeMode={FastImage.resizeMode.contain}
-                        />
-                        <Text style={styles.txtAnnouce}>
-                            Your goal shapes your workout. We’ll tailor the best mix of cardio and strength training for you!
-                        </Text>
-                    </View>
-                )
-            }
+            {currentIndex !== 3 && (
+                <View style={styles.annouce}>
+                    <FastImage
+                        style={styles.gif}
+                        source={{
+                            uri: 'https://i.gifer.com/XOsX.gif',
+                            priority: FastImage.priority.normal
+                        }}
+                        resizeMode={FastImage.resizeMode.contain}
+                    />
+                    <Text style={styles.txtAnnouce}>
+                        Your goal shapes your workout. We’ll tailor the best mix of cardio and strength training for you!
+                    </Text>
+                </View>
+            )}
 
             <View style={styles.body}>
                 <CurrentScreen />
             </View>
 
-            <View style={styles.bottomButton}>
-                <TouchableOpacity style={styles.btnNext} onPress={handleNext}>
-                    <Text style={styles.btnNextText}>
-                        {currentIndex === screens.length - 1 ? 'Start' : 'Next'}
-                    </Text>
-                </TouchableOpacity>
+            <View style={styles.onboardingWrap}>
+                <Onboarding
+                    total={screens.length }
+                    selectedIndex={currentIndex}
+                    onIndexChange={(index) => {
+                        if (index === screens.length ) {
+                            navigation.replace('HomeTabs'); 
+                        } else {
+                            setCurrentIndex(index);
+                        }
+                    }}
+                />
             </View>
         </View>
     );
@@ -126,7 +103,7 @@ const styles = StyleSheet.create({
         marginTop: height * 0.03
     },
     btnBack: {
-        width: 40, 
+        width: 40,
         height: 40,
         justifyContent: 'center',
         alignItems: 'center',
@@ -151,11 +128,12 @@ const styles = StyleSheet.create({
         borderRadius: height * 0.01,
     },
     progressActive: {
-        backgroundColor: '#5C4AFA', 
+        backgroundColor: '#5C4AFA',
     },
     title: {
         alignItems: 'flex-start',
         width: width * 0.83,
+        marginTop: height * 0.07
     },
     titelText: {
         fontSize: width * 0.1,
@@ -186,28 +164,14 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     body: {
-        flexGrow: 1, 
-        paddingBottom: height * 0.12, 
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
     },
-    bottomButton: {
+    onboardingWrap: {
         position: 'absolute',
-        bottom: height * 0.05,
-        left: 0,
-        right: 0,
-        alignItems: 'center',
-    },
-    btnNext: {
-        backgroundColor: '#111',
-        paddingVertical: height * 0.02,
-        width: '90%',
-        borderRadius: width * 0.3,
-        alignItems: 'center',
-    },
-    btnNextText: {
-        fontSize: width * 0.05,
-        fontWeight: 'bold',
-        color: '#fff',
-    },
+        width: '100%',
+        alignSelf: 'center',
+        bottom: 30
+    }
 });

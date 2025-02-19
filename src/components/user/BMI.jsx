@@ -25,7 +25,6 @@ const BMICalculator = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.container}>
-
             <View style={styles.Wrapper}>
                 <Text style={styles.label}>Chiều cao</Text>
                 <View style={{ height: 200 }}>
@@ -41,10 +40,7 @@ const BMICalculator = ({ navigation }) => {
                 <Text style={styles.bmiText}>Your BMI : </Text>
                 <Text style={styles.bmiNumber}>{calculateBMI().toString()}</Text>
             </View>
-
             <Text style={styles.bmiStatus}>{bmiStatus}</Text>
-
-
         </SafeAreaView>
     );
 };
@@ -87,7 +83,7 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 30
+        // marginTop: 30
     },
     bmiNumber: {
         fontSize: 25,
