@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
-import Svg, { Rect } from "react-native-svg";
+// import Svg, { Rect } from "react-native-svg";
 import { Calendar } from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon2 from 'react-native-vector-icons/FontAwesome5';
 import Icon3 from 'react-native-vector-icons/SimpleLineIcons';
 import Icon4 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon5 from 'react-native-vector-icons/Feather';
-import ChartComponent from '../custom/ChartComponent';
+import Icon6 from 'react-native-vector-icons/AntDesign';
+// import ChartComponent from '../custom/ChartComponent';
 
 
 
@@ -48,30 +49,34 @@ const Profile = ({ title, unit, color }) => {
 
             <View style={styles.optionSection}>
                 <TouchableOpacity style={styles.option}>
-                    <Icon3 name="settings" size={30} color="black" />
-                    <Text style={styles.optionText}>Cài đặt</Text>
+                    <View style={styles.optionTitle}>
+                        <Icon3 name="settings" size={30} color="black" />
+                        <Text style={styles.optionText}>Cài đặt</Text>
+                    </View>
+                    <Icon6 name="right" size={20} color="gray" />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.option}>
-                    <Icon5 name="user" size={30} color="black" />
-                    <Text style={styles.optionText}>Hồ sơ & Mục tiêu</Text>
+                    <View style={styles.optionTitle}>
+                        <Icon5 name="user" size={30} color="black" />
+                        <Text style={styles.optionText}>Hồ sơ & Mục tiêu</Text>
+                    </View>
+                    <Icon6 name="right" size={20} color="gray" />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.option}>
-                    <Icon4 name="book-plus-outline" size={30} color="black" />
-                    <Text style={styles.optionText}>Yêu thích</Text>
+                    <View style={styles.optionTitle}>
+                        <Icon4 name="book-plus-outline" size={30} color="black" />
+                        <Text style={styles.optionText}>Yêu thích</Text>
+                    </View>
+                    <Icon6 name="right" size={20} color="gray" />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.option}>
-                    <Icon name="login" size={30} color="black" />
-                    <Text style={styles.optionText}>Đăng xuất</Text>
+                    <View style={styles.optionTitle}>
+                        <Icon name="login" size={30} color="black" />
+                        <Text style={styles.optionText}>Đăng xuất</Text>
+                    </View>
+                    <Icon6 name="right" size={20} color="gray" />
                 </TouchableOpacity>
             </View>
-
-            {/* <View style={styles.chartSection}>
-                <Text style={styles.sectionTitle}>Tuần này</Text>
-                <View style={styles.chartWrap}>
-                    <ChartComponent title="Thời gian tập" unit="phút" color="hotpink" data={data} />
-                    <ChartComponent title="Calo tiêu hao" unit="kcal" color="orange" data={data} />
-                </View>
-            </View> */}
 
             <View style={styles.calendarSection}>
                 <Text style={styles.sectionTitle}>Lịch</Text>
@@ -108,7 +113,10 @@ const Profile = ({ title, unit, color }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: '#f5feff',
+    },
+    optionTitle: {
+        flexDirection: 'row'
     },
     userSection: {
         justifyContent: 'space-between',
@@ -139,9 +147,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     optionSection: {
-        marginTop: 30,
-        marginLeft: 50,
         marginBottom: 20,
+        backgroundColor: 'white',
+        alignSelf: 'center',
+        marginTop: 40,
+        borderRadius: 20,
+        elevation: 5
     },
     sectionTitle: {
         fontSize: 20,
@@ -152,13 +163,12 @@ const styles = StyleSheet.create({
     option: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginVertical: 10,
         height: 60,
         width: 310,
-        paddingLeft: 20,
-        backgroundColor: '#ebebeb',
-        borderRadius: 20,
-        elevation: 5
+        paddingHorizontal: 20,
+        marginVertical: 5,
+        justifyContent: 'space-between'
+
     },
     optionText: {
         fontSize: 18,
@@ -182,8 +192,8 @@ const styles = StyleSheet.create({
         marginLeft: 2
     },
     chartWrap: {
-      justifyContent: 'space-evenly',
-      flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        flexDirection: 'row',
     },
     chartTitle: {
         fontSize: 16,
